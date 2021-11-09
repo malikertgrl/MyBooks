@@ -28,9 +28,9 @@ const MyStack = ({ navigation }) => {
                 component={Books}
                 options={{
                     headerLeft: () =>
-                        <View style={{ padding: 10 }}>
+                        <View style={{ marginHorizontal: 15 }}>
                             <TouchableOpacity onPress={() => navigation.openDrawer()} >
-                                <FontAwesome5 name="bars" size={18} color="#fff" />
+                                <FontAwesome5 name="bars" size={17} color="#fff" />
                             </TouchableOpacity>
                         </View>
 
