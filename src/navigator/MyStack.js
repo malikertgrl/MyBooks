@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { View, Button } from "react-native"
+import { View, Button, TouchableOpacity } from "react-native"
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import Books from '../screens/Books';
 import Cart from "../screens/Cart";
+import Ionicons from "react-native-vector-icons/Ionicons"
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+
 
 const Stack = createStackNavigator();
 
@@ -23,12 +27,18 @@ const MyStack = ({ navigation }) => {
                 name="Books"
                 component={Books}
                 options={{
-                    headerLeft: () => (
-                        <Button
-                            onPress={() => navigation.openDrawer()}
-                            title="Info"
-                        />
-                    )
+                    headerLeft: () =>
+                        <View style={{ padding: 10 }}>
+                            <TouchableOpacity onPress={() => navigation.openDrawer()} >
+                                <FontAwesome5 name="bars" size={18} color="#fff" />
+                            </TouchableOpacity>
+                        </View>
+
+                    //     <Button
+                    //         onPress={() => navigation.openDrawer()}
+                    //         title="Info"
+                    //     />
+                    // )
                 }} />
             <Stack.Screen
                 name="Cart"
