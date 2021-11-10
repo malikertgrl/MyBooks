@@ -30,9 +30,17 @@ const MyStack = ({ navigation }) => {
                     headerLeft: () =>
                         <View style={{ marginHorizontal: 15 }}>
                             <TouchableOpacity onPress={() => navigation.openDrawer()} >
-                                <FontAwesome5 name="bars" size={17} color="#fff" />
+                                <FontAwesome5 name="bars" size={20} color="#fff" />
+                            </TouchableOpacity>
+                        </View>,
+
+                    headerRight: () =>
+                        <View style={{ marginHorizontal: 15 }}>
+                            <TouchableOpacity onPress={() => navigation.navigate("Cart")} >
+                                <FontAwesome5 name="shopping-cart" size={20} color="#fff" />
                             </TouchableOpacity>
                         </View>
+
 
                     //     <Button
                     //         onPress={() => navigation.openDrawer()}
