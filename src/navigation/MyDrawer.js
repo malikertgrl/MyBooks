@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Profile from "../screens/Profile";
+import Profile from "../screens/profile";
 import MyStack from './MyStack';
 
 

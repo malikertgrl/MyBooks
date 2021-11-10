@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View, Button, TouchableOpacity } from "react-native"
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import Books from '../screens/Books';
-import Cart from "../screens/Cart";
+import Books from '../screens/books';
+import Cart from "../screens/cart";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
