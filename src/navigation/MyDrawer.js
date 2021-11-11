@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 
 const MyDrawer = () => {
     return (
-        <Drawer.Navigator
+        <Drawer.Navigator initialRouteName="MyStack"
             screenOptions={{
                 headerStyle: { backgroundColor: "#0080ff" },
                 headerTitleAlign: "center",
