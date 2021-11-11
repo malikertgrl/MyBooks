@@ -1,4 +1,4 @@
-export const books = [
+export const Data = [
     {
         id: 1,
         name: 'The Book Thief',
