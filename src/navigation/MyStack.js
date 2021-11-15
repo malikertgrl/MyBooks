@@ -30,7 +30,7 @@ const MyStack = ({ navigation }) => {
                 component={Books}
                 options={{
                     headerLeft: () =>
-                        <Icon navigation={navigation.openDrawer} name="bars" />,
+                        <Icon navigation={() => navigation.openDrawer()} name="bars" />,
 
                     headerRight: () =>
                         <Icon navigation={() => navigation.navigate("Cart")} name="shopping-cart" />,
