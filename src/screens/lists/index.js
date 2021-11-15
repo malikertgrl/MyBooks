@@ -1,23 +1,21 @@
 import React from 'react'
 import { View, Text, FlatList, Image } from 'react-native'
-import { Data } from "./utils/Data"
 import CustomButton from "../../components/customButton";
-import { blueColor } from "../../utils"
 import { useNavigation } from "@react-navigation/core";
 
 
-const List = () => {
+const List = ({ title, backColor, booksData }) => {
 
 
     //usenavigation ile props olarak almadan navigation özelliğini kullanabiliyoruz
     const navigation = useNavigation();
-    // console.log({ navigation })
+    // console.log({ title, backColor, booksData })
 
     return (
         <View>
             <FlatList
 
-                data={Data}
+                data={booksData}
                 ItemSeparatorComponent={() => {
                     return (
                         <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
@@ -34,7 +32,7 @@ const List = () => {
                                 <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
                                 <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
                                 <View>
-                                    <CustomButton title="Add +" backColor={blueColor} />
+                                    <CustomButton title={title} backColor={backColor} />
                                 </View>
                             </View>
                         </View>
