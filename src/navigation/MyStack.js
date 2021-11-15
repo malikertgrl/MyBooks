@@ -6,6 +6,8 @@ import Cart from "../screens/cart";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import { blueColor } from '../utils';
+
 
 
 
@@ -20,7 +22,7 @@ const MyStack = ({ navigation }) => {
                 gestureDirection: 'horizontal',
                 gestureEnabled: true,
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                headerStyle: { backgroundColor: "#0080ff" },
+                headerStyle: { backgroundColor: blueColor },
                 headerTitleAlign: "center",
                 headerTintColor: "#fff"
             }}>
@@ -41,13 +43,6 @@ const MyStack = ({ navigation }) => {
                                 <FontAwesome5 name="shopping-cart" size={20} color="#fff" />
                             </TouchableOpacity>
                         </View>
-
-
-                    //     <Button
-                    //         onPress={() => navigation.openDrawer()}
-                    //         title="Info"
-                    //     />
-                    // )
                 }} />
             <Stack.Screen
                 name="Cart"
