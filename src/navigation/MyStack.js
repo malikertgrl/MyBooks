@@ -30,10 +30,10 @@ const MyStack = ({ navigation }) => {
                 component={Books}
                 options={{
                     headerLeft: () =>
-                        <Icon navigation={() => navigation.openDrawer()} name="bars" />,
+                        <Icon color="#fff" navigation={() => navigation.openDrawer()} name="bars" />,
 
                     headerRight: () =>
-                        <Icon navigation={() => navigation.navigate("Cart")} name="shopping-cart" />,
+                        <Icon color="#fff" navigation={() => navigation.navigate("Cart")} name="shopping-cart" />,
 
                 }} />
             <Stack.Screen name="Cart" component={Cart}

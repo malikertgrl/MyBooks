@@ -1,1 +1,2 @@
-export * as actionCreators from "./action";
+import * as actionCreators from "./action";
+export { actionCreators };

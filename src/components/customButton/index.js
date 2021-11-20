@@ -10,7 +10,7 @@ const CustomButton = ({ title, backColor }) => {
     // console.log(backColor)
     return (
         <View style={[{ backgroundColor: backColor }, styles.viewStyle]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log("tıklandı")}>
                 <Text style={styles.textStyle}>
                     {title}
                 </Text>
