@@ -12,7 +12,7 @@ const Badge = () => {
     const count = state.length
 
     return (
-        state.length !== 0 ?
+        count !== 0 ?
             <View style={badgeStyle}>
                 <Text style={textStyle}>
 

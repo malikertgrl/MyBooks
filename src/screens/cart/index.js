@@ -4,7 +4,6 @@ import { blueColor, orangeColor, } from "../../utils";
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/"
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Icon from "../../components/icon"
 
 
@@ -12,7 +11,7 @@ import Icon from "../../components/icon"
 const Cart = () => {
 
     const books_in_cart = useSelector(state => state.BooksReducer)
-    // console.log("sepettekiler", books_in_cart)
+    console.log("sepettekiler", books_in_cart.lengt)
     const dispatch = useDispatch();
     const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
     return (
@@ -34,25 +33,32 @@ const Cart = () => {
                     )
                 }}
                 renderItem={({ item }) => {
+
                     return (
-                        <View style={{ flexDirection: "row", }}>
-                            <Image
-                                style={{ width: 100, height: 150, margin: 10 }}
-                                source={{ uri: item.imgUrl }}
-                            />
-                            <View style={{ marginVertical: 10 }}>
-                                <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
-                                <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
-                                <View style={[{ backgroundColor: orangeColor }, styles.viewStyle]}>
-                                    {/* <CustomButton title={title} backColor={backColor} /> */}
-                                    <TouchableOpacity onPress={() => { remove_from_cart(item) }}>
-                                        <Text style={styles.textStyle}>
-                                            Remove -
-                                        </Text>
-                                    </TouchableOpacity>
+                        books_in_cart.lengt !== 0 ?
+                            <View style={{ flexDirection: "row", }}>
+                                <Image
+                                    style={{ width: 100, height: 150, margin: 10 }}
+                                    source={{ uri: item.imgUrl }}
+                                />
+                                <View style={{ marginVertical: 10 }}>
+                                    <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
+                                    <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
+                                    <View style={[{ backgroundColor: orangeColor }, styles.viewStyle]}>
+                                        {/* <CustomButton title={title} backColor={backColor} /> */}
+                                        <TouchableOpacity onPress={() => { remove_from_cart(item) }}>
+                                            <Text style={styles.textStyle}>
+                                                Remove -
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
+                            :
+                            <View>
+                                <Text> Sepette ürün bulunmamaktadır..</Text>
+
+                            </View>
                     )
                 }}
 
