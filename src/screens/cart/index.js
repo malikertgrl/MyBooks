@@ -11,31 +11,33 @@ import Icon from "../../components/icon"
 const Cart = () => {
 
     const books_in_cart = useSelector(state => state.BooksReducer)
-    console.log("sepettekiler", books_in_cart.lengt)
+    console.log("sepettekiler", books_in_cart.length)
     const dispatch = useDispatch();
     const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
     return (
-        <View>
-            {/* <List
+        books_in_cart.length !== 0 ?
+
+            <View>
+                {/* <List
                 title="Remove -"
                 backColor={orangeColor}
                 booksData={books_in_cart}
                 onPress={() => console.log("remove -")}
             /> */}
 
-            <FlatList
+                <FlatList
 
-                keyExtractor={(item, index) => `${item.id}${index}`}
-                data={books_in_cart}
-                ItemSeparatorComponent={() => {
-                    return (
-                        <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
-                    )
-                }}
-                renderItem={({ item }) => {
+                    keyExtractor={(item, index) => `${item.id}${index}`}
+                    data={books_in_cart}
+                    ItemSeparatorComponent={() => {
+                        return (
+                            <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
+                        )
+                    }}
+                    renderItem={({ item }) => {
 
-                    return (
-                        books_in_cart.lengt !== 0 ?
+                        return (
+
                             <View style={{ flexDirection: "row", }}>
                                 <Image
                                     style={{ width: 100, height: 150, margin: 10 }}
@@ -54,16 +56,18 @@ const Cart = () => {
                                     </View>
                                 </View>
                             </View>
-                            :
-                            <View>
-                                <Text> Sepette ürün bulunmamaktadır..</Text>
 
-                            </View>
-                    )
-                }}
-
-            />
-        </View>
+                        )
+                    }}
+                />
+            </View>
+            :
+            <View style={styles.emptyComponentView}>
+                <Icon name="shopping-cart" size={150} color="#000" />
+                <Text style={styles.emptyComponentText}>
+                    Sepetinizde ürün bulunmamaktadır...
+                </Text>
+            </View >
     )
 }
 
@@ -82,6 +86,14 @@ const styles = StyleSheet.create({
         margin: 5,
         position: "relative",
         marginTop: 70
+    },
+    emptyComponentView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    emptyComponentText: {
+        fontWeight: "bold", color: "#000"
     }
 })
 

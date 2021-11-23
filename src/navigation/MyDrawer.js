@@ -31,7 +31,7 @@ const MyDrawer = () => {
             <Drawer.Screen name="Cart" component={Cart} options={{
                 title: "Sepetim",
                 headerLeft: () =>
-                    <Icon name="arrow-left" color="#fff" navigation={() => navigation.navigate("Books")} />
+                    <Icon name="arrow-left" color="#fff" size={20} navigation={() => navigation.navigate("Books")} />
             }} />
 
 

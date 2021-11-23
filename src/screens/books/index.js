@@ -11,7 +11,7 @@ import { actionCreators } from "../../redux/"
 
 const Books = () => {
     const books = useSelector(state => state.BooksReducer)
-    console.log(books)
+    console.log("kitaplar", books)
     const dispatch = useDispatch();
     const { add_to_cart, remove_from_cart } = bindActionCreators(actionCreators, dispatch)
 

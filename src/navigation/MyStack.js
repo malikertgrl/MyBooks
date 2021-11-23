@@ -32,23 +32,17 @@ const MyStack = ({ navigation }) => {
                 component={Books}
                 options={{
                     headerLeft: () =>
-                        <Icon color="#fff" navigation={() => navigation.openDrawer()} name="bars" />,
+                        <Icon color="#fff" size={20} navigation={() => navigation.openDrawer()} name="bars" />,
 
                     headerRight: () => {
                         return (
                             <View>
                                 <Badge />
-                                <Icon color="#fff" navigation={() => navigation.navigate("Cart")} name="shopping-cart" />
+                                <Icon color="#fff" size={20} navigation={() => navigation.navigate("Cart")} name="shopping-cart" />
                             </View>
 
                         )
-
-                    }
-
-
-                    ,
-
-
+                    },
                 }} />
             < Stack.Screen name="Cart" component={Cart}
             />
