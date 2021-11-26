@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { blueColor, orangeColor, } from "../../utils";
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/"
-import Icon from "../../components/icon"
+import Icon from "../../components/icon";
+import { useNavigation } from "@react-navigation/core";
 
 
 
 const Cart = () => {
 
+    const navigation = useNavigation();
+
+
     const books_in_cart = useSelector(state => state.BooksReducer)
-    console.log("sepettekiler", books_in_cart.length)
+
+    let uniqueChars = [...new Set(books_in_cart)];
+    console.log("attık", uniqueChars);
+
+    // console.log("sepetteki kitaplar", booksName)
     const dispatch = useDispatch();
     const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
+
+
+
     return (
         books_in_cart.length !== 0 ?
 
@@ -28,7 +39,7 @@ const Cart = () => {
                 <FlatList
 
                     keyExtractor={(item, index) => `${item.id}${index}`}
-                    data={books_in_cart}
+                    data={uniqueChars}
                     ItemSeparatorComponent={() => {
                         return (
                             <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
@@ -39,14 +50,34 @@ const Cart = () => {
                         return (
 
                             <View style={{ flexDirection: "row", }}>
-                                <Image
-                                    style={{ width: 100, height: 150, margin: 10 }}
-                                    source={{ uri: item.imgUrl }}
-                                />
+                                <View style={{ elevation: 5 }}>
+                                    <Image
+                                        style={{ width: 150, height: 200, margin: 10 }}
+                                        source={{ uri: item.imgUrl }}
+                                    />
+                                </View>
+
                                 <View style={{ marginVertical: 10 }}>
                                     <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
                                     <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
+
+                                    <View style={styles.counterViewStyle}>
+                                        <View>
+                                            <TouchableOpacity >
+                                                <Text style={styles.textCounterStyle}>-</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        <View style={{ backgroundColor: "#ff6f60", height: 30, width: 30, borderRadius: 20, alignSelf: "center", alignItems: "center", justifyContent: "center" }}>
+                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>1</Text>
+                                        </View>
+                                        <View>
+                                            <TouchableOpacity >
+                                                <Text style={styles.textCounterStyle}>+</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
                                     <View style={[{ backgroundColor: orangeColor }, styles.viewStyle]}>
+
                                         {/* <CustomButton title={title} backColor={backColor} /> */}
                                         <TouchableOpacity onPress={() => { remove_from_cart(item) }}>
                                             <Text style={styles.textStyle}>
@@ -60,10 +91,10 @@ const Cart = () => {
                         )
                     }}
                 />
-            </View>
+            </View >
             :
             <View style={styles.emptyComponentView}>
-                <Icon name="shopping-cart" size={150} color="#000" />
+                <Icon name="shopping-cart" size={150} color="#000" navigation={() => navigation.navigate("Books")} />
                 <Text style={styles.emptyComponentText}>
                     Sepetinizde ürün bulunmamaktadır...
                 </Text>
@@ -85,7 +116,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 5,
         position: "relative",
-        marginTop: 70
+        marginTop: 10
     },
     emptyComponentView: {
         flex: 1,
@@ -94,6 +125,23 @@ const styles = StyleSheet.create({
     },
     emptyComponentText: {
         fontWeight: "bold", color: "#000"
+    },
+    textCounterStyle: {
+        fontSize: 15,
+        fontWeight: "bold",
+        color: "#000",
+        color: "#ff6f60",
+        margin: 10
+    },
+    counterViewStyle: {
+        backgroundColor: "#fff",
+        marginVertical: 30,
+        width: 100,
+        flexDirection: "row",
+        borderWidth: 1,
+        justifyContent: "center",
+        borderColor: "#808080",
+        borderRadius: 20
     }
 })
 
