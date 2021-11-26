@@ -1,3 +1,4 @@
+
 export const Data = [
     {
         id: 1,
@@ -35,14 +36,14 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535115320l/40121378._SY475_.jpg'
     },
     {
-        id: 7,
+        id: 6,
         name: 'Dune',
         author: 'Frank Herbert',
         imgUrl:
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1434908555l/234225._SY475_.jpg'
     },
     {
-        id: 8,
+        id: 7,
         name: 'Atlas Shrugged',
         author: 'Ayn Rand',
         imgUrl:
