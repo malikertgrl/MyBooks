@@ -16,8 +16,8 @@ const Cart = () => {
 
     const books_in_cart = useSelector(state => state.BooksReducer)
 
-    let uniqueChars = [...new Set(books_in_cart)];
-    console.log("attık", uniqueChars);
+    // let uniqueChars = [...new Set(books_in_cart)];
+    // console.log("attık", uniqueChars);
 
     // console.log("sepetteki kitaplar", booksName)
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Cart = () => {
                 <FlatList
 
                     keyExtractor={(item, index) => `${item.id}${index}`}
-                    data={uniqueChars}
+                    data={books_in_cart}
                     ItemSeparatorComponent={() => {
                         return (
                             <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />

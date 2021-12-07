@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Alert, Image, StyleSheet, FlatList, TouchableOpacity, ToastAndroid } from "react-native";
 import { blueColor, } from "../../utils";
 import List from "../lists"
 import { Data } from "../lists/utils/Data";
@@ -14,6 +14,26 @@ const Books = () => {
     console.log("kitaplar", books)
     const dispatch = useDispatch();
     const { add_to_cart, remove_from_cart } = bindActionCreators(actionCreators, dispatch)
+
+
+    const addCart = (item) => {
+        console.log(item.id, filterBooks, "item id")
+        // add_to_cart(item);
+        const filterBooks = books.filter(x => x.id == item.id)
+        if (filterBooks.length > 0) {
+            return ToastAndroid.showWithGravity(
+                "Ürün zaten sepette var !",
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM
+            );
+            //  Alert.alert("uyarı", "ürün zaten sepette var.")
+        } else {
+            // ToastAndroid.show("ürün sepete eklendi.", ToastAndroid.SHORT);
+            return add_to_cart(item)
+        }
+
+
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -37,7 +57,7 @@ const Books = () => {
                                 <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
                                 <View style={[{ backgroundColor: blueColor }, styles.viewStyle]}>
                                     {/* <CustomButton title={title} backColor={backColor} /> */}
-                                    <TouchableOpacity onPress={() => { add_to_cart(item) }}>
+                                    <TouchableOpacity onPress={() => { addCart(item) }}>
                                         <Text style={styles.textStyle}>
                                             Add +
                                         </Text>
