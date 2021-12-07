@@ -1,23 +1,21 @@
 import React from 'react'
-import { View, Text, FlatList, Image } from 'react-native'
-import { Data } from "./utils/Data"
-import CustomButton from "../../components/customButton";
-import { blueColor } from "../../utils"
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native'
+// import CustomButton from "../../components/customButton";
 import { useNavigation } from "@react-navigation/core";
 
 
-const List = () => {
+const List = ({ title, backColor, booksData, onPress }) => {
 
 
     //usenavigation ile props olarak almadan navigation özelliğini kullanabiliyoruz
     const navigation = useNavigation();
-    // console.log({ navigation })
+    // console.log({ title, backColor, booksData })
 
     return (
         <View>
             <FlatList
-
-                data={Data}
+                keyExtractor={(item, index) => `${item.id}${index}`}
+                data={booksData}
                 ItemSeparatorComponent={() => {
                     return (
                         <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
@@ -33,8 +31,13 @@ const List = () => {
                             <View style={{ marginVertical: 10 }}>
                                 <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
                                 <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
-                                <View>
-                                    <CustomButton title="Add +" backColor={blueColor} />
+                                <View style={[{ backgroundColor: backColor }, styles.viewStyle]}>
+                                    {/* <CustomButton title={title} backColor={backColor} /> */}
+                                    <TouchableOpacity onPress={onPress}>
+                                        <Text style={styles.textStyle}>
+                                            {title}
+                                        </Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
@@ -45,4 +48,21 @@ const List = () => {
     )
 }
 
+
+const styles = StyleSheet.create({
+    textStyle: {
+        color: "#fff",
+        fontSize: 18
+    },
+    viewStyle: {
+        justifyContent: "center",
+        alignItems: "center",
+        height: 35,
+        width: 90,
+        borderRadius: 10,
+        margin: 5,
+        position: "relative",
+        marginTop: 70
+    }
+})
 export default List;

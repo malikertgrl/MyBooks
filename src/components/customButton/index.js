@@ -10,7 +10,7 @@ const CustomButton = ({ title, backColor }) => {
     // console.log(backColor)
     return (
         <View style={[{ backgroundColor: backColor }, styles.viewStyle]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log("tıklandı")}>
                 <Text style={styles.textStyle}>
                     {title}
                 </Text>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         height: 35,
-        width: 70,
+        width: 90,
         borderRadius: 10,
         margin: 5,
         position: "relative",

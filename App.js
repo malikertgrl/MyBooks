@@ -1,10 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
-import Router from "./src/navigation/Router"
+import Router from "./src/navigation/Router";
+import { Provider } from "react-redux";
+import { Store } from "./src/redux/Store";
 
 const App = () => {
   return (
-    <Router />
+    <Provider store={Store}>
+      <Router />
+    </Provider>
   )
 }
 

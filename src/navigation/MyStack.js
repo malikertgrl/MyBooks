@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { View } from "react-native"
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import Books from '../screens/books';
 import Cart from "../screens/cart";
 import { blueColor } from '../utils';
-import Icon from "../components/icon"
+import Icon from "../components/icon";
+import Badge from "../components/badge"
 
 
 
@@ -30,15 +32,21 @@ const MyStack = ({ navigation }) => {
                 component={Books}
                 options={{
                     headerLeft: () =>
-                        <Icon navigation={() => navigation.openDrawer()} name="bars" />,
+                        <Icon color="#fff" size={20} navigation={() => navigation.openDrawer()} name="bars" />,
 
-                    headerRight: () =>
-                        <Icon navigation={() => navigation.navigate("Cart")} name="shopping-cart" />,
+                    headerRight: () => {
+                        return (
+                            <View>
+                                <Badge />
+                                <Icon color="#fff" size={20} navigation={() => navigation.navigate("Cart")} name="shopping-cart" />
+                            </View>
 
+                        )
+                    },
                 }} />
-            <Stack.Screen name="Cart" component={Cart}
+            < Stack.Screen name="Cart" component={Cart}
             />
-        </Stack.Navigator>
+        </Stack.Navigator >
     )
 }
 
