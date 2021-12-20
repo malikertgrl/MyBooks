@@ -68,7 +68,7 @@ const Cart = () => {
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ backgroundColor: "#ff6f60", height: 30, width: 30, borderRadius: 20, alignSelf: "center", alignItems: "center", justifyContent: "center" }}>
-                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>1</Text>
+                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{item.count}</Text>
                                         </View>
                                         <View>
                                             <TouchableOpacity >
