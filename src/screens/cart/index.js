@@ -14,7 +14,7 @@ const Cart = () => {
     const navigation = useNavigation();
 
 
-    const books_in_cart = useSelector(state => state.BooksReducer)
+    const { booksList, number } = useSelector(state => state.BooksReducer)
 
     // let uniqueChars = [...new Set(books_in_cart)];
     // console.log("attık", uniqueChars);
@@ -26,7 +26,7 @@ const Cart = () => {
 
 
     return (
-        books_in_cart.length !== 0 ?
+        booksList.length > 0 ?
 
             <View>
                 {/* <List
@@ -39,7 +39,7 @@ const Cart = () => {
                 <FlatList
 
                     keyExtractor={(item, index) => `${item.id}${index}`}
-                    data={books_in_cart}
+                    data={booksList}
                     ItemSeparatorComponent={() => {
                         return (
                             <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
@@ -79,7 +79,7 @@ const Cart = () => {
                                     <View style={[{ backgroundColor: orangeColor }, styles.viewStyle]}>
 
                                         {/* <CustomButton title={title} backColor={backColor} /> */}
-                                        <TouchableOpacity onPress={() => { remove_from_cart(item) }}>
+                                        <TouchableOpacity onPress={() => { console.log({ item }) || remove_from_cart(item) }}>
                                             <Text style={styles.textStyle}>
                                                 Remove -
                                             </Text>

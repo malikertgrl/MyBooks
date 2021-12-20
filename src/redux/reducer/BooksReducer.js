@@ -1,17 +1,27 @@
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../action/types"
 
-INITIAL_STATE = []
+
+INITIAL_STATE = {
+    booksList: [],
+    number: {},
+    count: 0
+
+}
 
 
 
 export const BooksReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case "add_to_cart":
-            return [...state, action.payload]
+        case ADD_TO_CART:
+            return {
+                ...state,
+                booksList: [...state.booksList, action.payload]
+            }
 
 
-        case "remove_from_cart":
-            console.log("remove_from_cart")
-            return state.filter(item => item.id !== action.payload.id)
+        case REMOVE_FROM_CART:
+            console.log("remove book")
+            return state.booksList.filter(x => x.id !== action.payload.id)
 
         default:
             return state;

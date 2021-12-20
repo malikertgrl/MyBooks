@@ -7,16 +7,18 @@ import { useSelector } from 'react-redux';
 const Badge = () => {
 
     const { badgeStyle, textStyle } = styles;
-    const state = useSelector(state => state.BooksReducer)
-    console.log("ne geliyor bakalım", state.length)
-    const count = state.length
+
+    const { booksList, number } = useSelector(state => state.BooksReducer)
+
+    console.log("ne geliyor bakalım", booksList.length)
+
 
     return (
-        count !== 0 ?
+        booksList.length !== 0 ?
             <View style={badgeStyle}>
                 <Text style={textStyle}>
 
-                    {state.length}
+                    {booksList.length}
                 </Text>
             </View>
             :

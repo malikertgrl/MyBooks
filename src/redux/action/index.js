@@ -1,7 +1,10 @@
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./types"
+
+
 export const add_to_cart = item => {
     return (dispatch) => {
         dispatch({
-            type: "add_to_cart",
+            type: ADD_TO_CART,
             payload: item
         })
     }
@@ -10,8 +13,9 @@ export const add_to_cart = item => {
 export const remove_from_cart = item => {
     return (dispatch) => {
         dispatch({
-            type: "remove_from_cart",
+            type: REMOVE_FROM_CART,
             payload: item
         })
     }
 }
+

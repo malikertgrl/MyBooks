@@ -10,16 +10,15 @@ import { actionCreators } from "../../redux/"
 
 
 const Books = () => {
-    const books = useSelector(state => state.BooksReducer)
-    console.log("kitaplar", books)
+    const { booksList, number } = useSelector(state => state.BooksReducer)
+    console.log("kitaplar", booksList)
     const dispatch = useDispatch();
     const { add_to_cart, remove_from_cart } = bindActionCreators(actionCreators, dispatch)
 
 
     const addCart = (item) => {
-        console.log(item.id, filterBooks, "item id")
         // add_to_cart(item);
-        const filterBooks = books.filter(x => x.id == item.id)
+        const filterBooks = booksList.filter(x => x.id == item.id)
         if (filterBooks.length > 0) {
             return ToastAndroid.showWithGravity(
                 "Ürün zaten sepette var !",
