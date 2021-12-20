@@ -20,8 +20,11 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
 
 
         case REMOVE_FROM_CART:
-            console.log("remove book")
-            return state.booksList.filter(x => x.id !== action.payload.id)
+            console.log("remove_from_cart")
+            return {
+                ...state,
+                booksList: state.booksList.filter(item => item !== action.payload)
+            }
 
         default:
             return state;
