@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../action/types"
+import {
+    ADD_COUNT,
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
+    REDUCE_COUNT
+} from "../action/types"
 
 
 INITIAL_STATE = {
@@ -24,6 +29,11 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 booksList: state.booksList.filter(item => item !== action.payload)
+            }
+
+        case ADD_COUNT:
+            return {
+                ...state, count: state.count + 1
             }
 
         default:

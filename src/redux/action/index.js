@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./types"
+import {
+    ADD_COUNT,
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
+    REDUCE_COUNT
+} from "./types"
 
 
 export const add_to_cart = item => {
@@ -15,6 +20,22 @@ export const remove_from_cart = item => {
         dispatch({
             type: REMOVE_FROM_CART,
             payload: item
+        })
+    }
+}
+
+export const add_count = () => {
+    return (dispatch) => {
+        dispatch({
+            type: ADD_COUNT
+        })
+    }
+}
+
+export const reduce_count = () => {
+    return (dispatch) => {
+        dispatch({
+            type: REDUCE_COUNT
         })
     }
 }
