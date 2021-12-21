@@ -14,14 +14,17 @@ const Cart = () => {
     const navigation = useNavigation();
 
 
-    const { booksList, number } = useSelector(state => state.BooksReducer)
+    const { booksList, number, count } = useSelector(state => state.BooksReducer)
 
     // let uniqueChars = [...new Set(books_in_cart)];
     // console.log("attık", uniqueChars);
 
     // console.log("sepetteki kitaplar", booksName)
     const dispatch = useDispatch();
-    const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
+    const {
+        remove_from_cart,
+        add_count,
+        reduce_count } = bindActionCreators(actionCreators, dispatch)
 
 
 
@@ -63,15 +66,15 @@ const Cart = () => {
 
                                     <View style={styles.counterViewStyle}>
                                         <View>
-                                            <TouchableOpacity >
+                                            <TouchableOpacity onPress={() => reduce_count()} >
                                                 <Text style={styles.textCounterStyle}>-</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ backgroundColor: "#ff6f60", height: 30, width: 30, borderRadius: 20, alignSelf: "center", alignItems: "center", justifyContent: "center" }}>
-                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{item.count}</Text>
+                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{count}</Text>
                                         </View>
                                         <View>
-                                            <TouchableOpacity >
+                                            <TouchableOpacity onPress={() => add_count()} >
                                                 <Text style={styles.textCounterStyle}>+</Text>
                                             </TouchableOpacity>
                                         </View>

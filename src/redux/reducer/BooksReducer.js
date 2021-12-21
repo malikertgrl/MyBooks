@@ -32,9 +32,10 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
             }
 
         case ADD_COUNT:
-            return {
-                ...state, count: state.count + 1
-            }
+            return { ...state, count: state.count + 1 }
+
+        case REDUCE_COUNT:
+            return { ...state, count: state.count - 1 }
 
         default:
             return state;
