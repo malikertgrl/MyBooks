@@ -14,7 +14,7 @@ const Cart = () => {
     const navigation = useNavigation();
 
 
-    const { booksList, number } = useSelector(state => state.BooksReducer)
+    const { booksList } = useSelector(state => state.BooksReducer)
     console.log({ booksList })
     const dispatch = useDispatch();
     const {

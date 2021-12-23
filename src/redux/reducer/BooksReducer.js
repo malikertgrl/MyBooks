@@ -8,8 +8,7 @@ import {
 
 INITIAL_STATE = {
     booksList: [],
-    number: {},
-    // count: 0
+
 
 }
 
@@ -31,9 +30,17 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
                 booksList: state.booksList.filter(item => item !== action.payload)
             }
         case ADD_COUNT:
-            return { ...state, count: action.payload }
+            // return { ...state, count: state.count + 1 }
 
+            var index = state.booksList.findIndex(y => y.id !== action.payload); //finding index of the item
 
+            const newArray = [...state.booksList]; //making a new array
+            newArray[index].count += 1//changing value in the new array
+            console.log("ekle", index)
+            return {
+                ...state, //copying the orignal state
+                booksList: newArray, //reassingning todos to new array
+            }
 
 
         // case ADD_COUNT:

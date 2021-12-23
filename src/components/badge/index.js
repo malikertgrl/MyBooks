@@ -8,7 +8,7 @@ const Badge = () => {
 
     const { badgeStyle, textStyle } = styles;
 
-    const { booksList, number } = useSelector(state => state.BooksReducer)
+    const { booksList } = useSelector(state => state.BooksReducer)
 
     console.log("ne geliyor bakalım", booksList.length)
 
