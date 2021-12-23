@@ -9,7 +9,7 @@ import {
 INITIAL_STATE = {
     booksList: [],
     number: {},
-    count: 0
+    // count: 0
 
 }
 
@@ -30,12 +30,17 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 booksList: state.booksList.filter(item => item !== action.payload)
             }
-
         case ADD_COUNT:
-            return { ...state, count: state.count + 1 }
+            return { ...state, count: action.payload }
 
-        case REDUCE_COUNT:
-            return { ...state, count: state.count - 1 }
+
+
+
+        // case ADD_COUNT:
+        //     return { ...state, count: state.count + 1 }
+
+        // case REDUCE_COUNT:
+        //     return { ...state, count: state.count - 1 }
 
         default:
             return state;

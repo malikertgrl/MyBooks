@@ -14,12 +14,8 @@ const Cart = () => {
     const navigation = useNavigation();
 
 
-    const { booksList, number, count } = useSelector(state => state.BooksReducer)
-
-    // let uniqueChars = [...new Set(books_in_cart)];
-    // console.log("attık", uniqueChars);
-
-    // console.log("sepetteki kitaplar", booksName)
+    const { booksList, number } = useSelector(state => state.BooksReducer)
+    console.log({ booksList })
     const dispatch = useDispatch();
     const {
         remove_from_cart,
@@ -66,12 +62,12 @@ const Cart = () => {
 
                                     <View style={styles.counterViewStyle}>
                                         <View>
-                                            <TouchableOpacity onPress={() => reduce_count()} >
+                                            <TouchableOpacity onPress={() => reduce_count(1)} >
                                                 <Text style={styles.textCounterStyle}>-</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ backgroundColor: "#ff6f60", height: 30, width: 30, borderRadius: 20, alignSelf: "center", alignItems: "center", justifyContent: "center" }}>
-                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{count}</Text>
+                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{item.count}</Text>
                                         </View>
                                         <View>
                                             <TouchableOpacity onPress={() => add_count()} >

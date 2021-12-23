@@ -24,10 +24,11 @@ export const remove_from_cart = item => {
     }
 }
 
-export const add_count = () => {
+export const add_count = (val) => {
     return (dispatch) => {
         dispatch({
-            type: ADD_COUNT
+            type: ADD_COUNT,
+            payload: val
         })
     }
 }
