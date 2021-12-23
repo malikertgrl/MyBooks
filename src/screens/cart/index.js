@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity, ToastAndroid } from "react-native";
 import { blueColor, orangeColor, } from "../../utils";
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
@@ -23,6 +23,24 @@ const Cart = () => {
         reduce_count } = bindActionCreators(actionCreators, dispatch)
 
 
+
+    const reduce = (item) => {
+        console.log("ne var ", booksList)
+        const filterReduce = booksList.filter(x => x.count == 1)
+        console.log({ filterReduce })
+
+        // if (filterReduce > 0) {
+        //     return ToastAndroid.showWithGravity(
+        //         "Ürünü sepetten kaldırmak için remove'a tıklayınız.",
+        //         ToastAndroid.SHORT,
+        //         ToastAndroid.BOTTOM
+        //     );
+        // } else {
+        //     reduce_count(item)
+        // }
+
+        reduce_count(item)
+    }
 
     return (
         booksList.length > 0 ?
@@ -62,7 +80,7 @@ const Cart = () => {
 
                                     <View style={styles.counterViewStyle}>
                                         <View>
-                                            <TouchableOpacity onPress={() => reduce_count(1)} >
+                                            <TouchableOpacity onPress={() => reduce(item)} >
                                                 <Text style={styles.textCounterStyle}>-</Text>
                                             </TouchableOpacity>
                                         </View>
@@ -70,7 +88,7 @@ const Cart = () => {
                                             <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{item.count}</Text>
                                         </View>
                                         <View>
-                                            <TouchableOpacity onPress={() => add_count()} >
+                                            <TouchableOpacity onPress={() => add_count(item)} >
                                                 <Text style={styles.textCounterStyle}>+</Text>
                                             </TouchableOpacity>
                                         </View>

@@ -34,10 +34,11 @@ export const add_count = item => {
     }
 }
 
-export const reduce_count = () => {
+export const reduce_count = item => {
     return (dispatch) => {
         dispatch({
-            type: REDUCE_COUNT
+            type: REDUCE_COUNT,
+            payload: item
         })
     }
 }

@@ -30,24 +30,22 @@ export const BooksReducer = (state = INITIAL_STATE, action) => {
                 booksList: state.booksList.filter(item => item !== action.payload)
             }
         case ADD_COUNT:
-            // return { ...state, count: state.count + 1 }
-
-            var index = state.booksList.findIndex(y => y.id !== action.payload); //finding index of the item
-
+            const index = state.booksList.findIndex(y => y.id == action.payload?.id); //finding index of the item
+            console.log("index", index)
             const newArray = [...state.booksList]; //making a new array
             newArray[index].count += 1//changing value in the new array
-            console.log("ekle", index)
             return {
                 ...state, //copying the orignal state
                 booksList: newArray, //reassingning todos to new array
             }
-
-
-        // case ADD_COUNT:
-        //     return { ...state, count: state.count + 1 }
-
-        // case REDUCE_COUNT:
-        //     return { ...state, count: state.count - 1 }
+        case REDUCE_COUNT:
+            const indexReduce = state.booksList.findIndex(y => y.id == action.payload?.id); //finding indexReduce of the item
+            const newArray2 = [...state.booksList]; //making a new array
+            newArray2[indexReduce].count -= 1//changing value in the new array
+            return {
+                ...state, //copying the orignal state
+                booksList: newArray2, //reassingning todos to new array
+            }
 
         default:
             return state;
