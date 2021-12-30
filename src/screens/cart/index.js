@@ -92,9 +92,9 @@ const Cart = () => {
                 />
             </View >
             :
-            <View style={styles.emptyComponentView}>
+            <View style={Styles.emptyComponentView}>
                 <Icon name="shopping-cart" size={150} color="#000" navigation={() => navigation.navigate("Books")} />
-                <Text style={styles.emptyComponentText}>
+                <Text style={Styles.emptyComponentText}>
                     Sepetinizde ürün bulunmamaktadır...
                 </Text>
             </View >
@@ -102,9 +102,5 @@ const Cart = () => {
 }
 
 
-const styles = StyleSheet.create({
-
-
-})
 
 export default Cart;

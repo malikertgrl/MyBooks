@@ -11,6 +11,7 @@ export default {
             width: 90,
             borderRadius: 10,
             margin: 5,
+
             // position: "relative",
             // marginTop: 70
         }
