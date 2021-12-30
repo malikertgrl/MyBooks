@@ -3,36 +3,24 @@ import {
     View,
     Text,
     TouchableOpacity,
-    StyleSheet
-} from 'react-native'
+} from 'react-native';
 
-const CustomButton = ({ title, backColor }) => {
+import style from './style';
+
+const CustomButton = ({ title, backColor, onPress }) => {
     // console.log(backColor)
     return (
-        <View style={[{ backgroundColor: backColor }, styles.viewStyle]}>
-            <TouchableOpacity onPress={() => console.log("tıklandı")}>
-                <Text style={styles.textStyle}>
+
+        <TouchableOpacity onPress={onPress}>
+            <View style={[{ backgroundColor: backColor }, style.styles.viewStyle]}>
+                <Text style={style.styles.textStyle}>
                     {title}
                 </Text>
-            </TouchableOpacity>
-        </View>
+            </View>
+        </TouchableOpacity >
+
     )
 }
-const styles = StyleSheet.create({
-    textStyle: {
-        color: "#fff",
-        fontSize: 18
-    },
-    viewStyle: {
-        justifyContent: "center",
-        alignItems: "center",
-        height: 35,
-        width: 90,
-        borderRadius: 10,
-        margin: 5,
-        position: "relative",
-        marginTop: 70
-    }
-})
+
 
 export default CustomButton;

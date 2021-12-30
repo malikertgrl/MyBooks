@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { orangeColor } from '../../utils';
 import { useSelector } from 'react-redux';
+import style from "./style"
 
 
 const Badge = () => {
 
-    const { badgeStyle, textStyle } = styles;
+
 
     const { booksList } = useSelector(state => state.BooksReducer)
 
@@ -15,8 +15,8 @@ const Badge = () => {
 
     return (
         booksList.length !== 0 ?
-            <View style={badgeStyle}>
-                <Text style={textStyle}>
+            <View style={style.styles.badgeStyle}>
+                <Text style={style.styles.textStyle}>
 
                     {booksList.length}
                 </Text>
@@ -29,20 +29,3 @@ const Badge = () => {
 
 export default Badge
 
-const styles = StyleSheet.create({
-    badgeStyle: {
-        zIndex: 100,
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-        backgroundColor: orangeColor,
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-        marginTop: -10,
-        marginLeft: 31
-    },
-    textStyle: {
-        color: "#fff"
-    }
-})
