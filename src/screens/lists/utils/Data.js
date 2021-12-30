@@ -1,6 +1,7 @@
 
 export const Data = [
     {
+        count: 1,
         id: 1,
         name: 'The Book Thief',
         author: 'Markus Zusak',
@@ -8,6 +9,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522157426l/19063._SY475_.jpg'
     },
     {
+        count: 1,
         id: 2,
         name: 'Sapiens',
         author: 'Yuval Noah Harari',
@@ -15,6 +17,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1420585954l/23692271.jpg'
     },
     {
+        count: 1,
         id: 3,
         name: 'Crime and Punishment',
         author: 'Fyodor Dostoyevsky',
@@ -22,6 +25,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1382846449l/7144.jpg'
     },
     {
+        count: 1,
         id: 4,
         name: 'No Longer Human',
         author: 'Osamu Dazai',
@@ -29,6 +33,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1422638843l/194746.jpg'
     },
     {
+        count: 1,
         id: 5,
         name: 'Atomic Habits',
         author: 'James Clear',
@@ -36,6 +41,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535115320l/40121378._SY475_.jpg'
     },
     {
+        count: 1,
         id: 6,
         name: 'Dune',
         author: 'Frank Herbert',
@@ -43,6 +49,7 @@ export const Data = [
             'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1434908555l/234225._SY475_.jpg'
     },
     {
+        count: 1,
         id: 7,
         name: 'Atlas Shrugged',
         author: 'Ayn Rand',

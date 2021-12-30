@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Button, Image, StyleSheet, FlatList, TouchableOpacity, ToastAndroid } from "react-native";
 import { blueColor, orangeColor, } from "../../utils";
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
@@ -14,19 +14,36 @@ const Cart = () => {
     const navigation = useNavigation();
 
 
-    const books_in_cart = useSelector(state => state.BooksReducer)
-
-    // let uniqueChars = [...new Set(books_in_cart)];
-    // console.log("attık", uniqueChars);
-
-    // console.log("sepetteki kitaplar", booksName)
+    const { booksList } = useSelector(state => state.BooksReducer)
+    console.log({ booksList })
     const dispatch = useDispatch();
-    const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
+    const {
+        remove_from_cart,
+        add_count,
+        reduce_count } = bindActionCreators(actionCreators, dispatch)
 
 
+
+    const reduce = (item) => {
+        console.log("ne var ", booksList)
+        const filterReduce = booksList.filter(x => x.count == 1)
+        console.log({ filterReduce })
+
+        // if (filterReduce > 0) {
+        //     return ToastAndroid.showWithGravity(
+        //         "Ürünü sepetten kaldırmak için remove'a tıklayınız.",
+        //         ToastAndroid.SHORT,
+        //         ToastAndroid.BOTTOM
+        //     );
+        // } else {
+        //     reduce_count(item)
+        // }
+
+        reduce_count(item)
+    }
 
     return (
-        books_in_cart.length !== 0 ?
+        booksList.length > 0 ?
 
             <View>
                 {/* <List
@@ -39,7 +56,7 @@ const Cart = () => {
                 <FlatList
 
                     keyExtractor={(item, index) => `${item.id}${index}`}
-                    data={books_in_cart}
+                    data={booksList}
                     ItemSeparatorComponent={() => {
                         return (
                             <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
@@ -63,15 +80,15 @@ const Cart = () => {
 
                                     <View style={styles.counterViewStyle}>
                                         <View>
-                                            <TouchableOpacity >
+                                            <TouchableOpacity onPress={() => reduce(item)} >
                                                 <Text style={styles.textCounterStyle}>-</Text>
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ backgroundColor: "#ff6f60", height: 30, width: 30, borderRadius: 20, alignSelf: "center", alignItems: "center", justifyContent: "center" }}>
-                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>1</Text>
+                                            <Text style={[styles.textCounterStyle, { color: "#fff", margin: 0 }]}>{item.count}</Text>
                                         </View>
                                         <View>
-                                            <TouchableOpacity >
+                                            <TouchableOpacity onPress={() => add_count(item)} >
                                                 <Text style={styles.textCounterStyle}>+</Text>
                                             </TouchableOpacity>
                                         </View>
@@ -79,7 +96,7 @@ const Cart = () => {
                                     <View style={[{ backgroundColor: orangeColor }, styles.viewStyle]}>
 
                                         {/* <CustomButton title={title} backColor={backColor} /> */}
-                                        <TouchableOpacity onPress={() => { remove_from_cart(item) }}>
+                                        <TouchableOpacity onPress={() => { console.log({ item }) || remove_from_cart(item) }}>
                                             <Text style={styles.textStyle}>
                                                 Remove -
                                             </Text>
