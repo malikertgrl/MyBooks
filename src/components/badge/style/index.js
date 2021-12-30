@@ -1,5 +1,3 @@
-import { orangeColor } from '../../../utils';
-
 
 export default {
     styles: {
@@ -8,7 +6,7 @@ export default {
             width: 20,
             height: 20,
             borderRadius: 10,
-            backgroundColor: orangeColor,
+            backgroundColor: "#e53935",
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
