@@ -6,6 +6,8 @@ import { Data } from "../lists/utils/Data";
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/"
+import CustomButton from "../../components/customButton"
+import style from "./style"
 
 
 
@@ -13,7 +15,7 @@ const Books = () => {
     const { booksList, number } = useSelector(state => state.BooksReducer)
     console.log("kitaplar", booksList)
     const dispatch = useDispatch();
-    const { add_to_cart, remove_from_cart } = bindActionCreators(actionCreators, dispatch)
+    const { add_to_cart } = bindActionCreators(actionCreators, dispatch)
 
 
     const addCart = (item) => {
@@ -41,27 +43,28 @@ const Books = () => {
                 data={Data}
                 ItemSeparatorComponent={() => {
                     return (
-                        <View style={{ borderBottomWidth: 1, borderBottomColor: "gray", }} />
+                        <View style={style.styles.seperatorStyle} />
                     )
                 }}
                 renderItem={({ item }) => {
                     return (
-                        <View style={{ flexDirection: "row", }}>
+                        <View style={{ flexDirection: "row" }}>
                             <Image
-                                style={{ width: 100, height: 150, margin: 10 }}
+                                style={style.styles.imageStyle}
                                 source={{ uri: item.imgUrl }}
                             />
-                            <View style={{ marginVertical: 10 }}>
-                                <Text style={{ marginLeft: 5, fontSize: 18, fontWeight: "bold", color: "#000" }}>{item.name}</Text>
-                                <Text style={{ marginLeft: 5, fontSize: 15, }}>{item.author}</Text>
-                                <View style={[{ backgroundColor: blueColor }, styles.viewStyle]}>
-                                    {/* <CustomButton title={title} backColor={backColor} /> */}
-                                    <TouchableOpacity onPress={() => { addCart(item) }}>
-                                        <Text style={styles.textStyle}>
-                                            Add +
-                                        </Text>
-                                    </TouchableOpacity>
+                            <View style={style.styles.textContainer}>
+                                <View>
+                                    <Text style={style.styles.nameStyle}>{item.name}</Text>
+                                    <Text style={style.styles.authorStyle}>{item.author}</Text>
                                 </View>
+                                <View>
+                                    <CustomButton
+                                        onPress={() => addCart(item)}
+                                        backColor={blueColor}
+                                        title={"Add +"} />
+                                </View>
+
                             </View>
                         </View>
                     )
@@ -72,21 +75,6 @@ const Books = () => {
 }
 
 
-const styles = StyleSheet.create({
-    textStyle: {
-        color: "#fff",
-        fontSize: 18
-    },
-    viewStyle: {
-        justifyContent: "center",
-        alignItems: "center",
-        height: 35,
-        width: 90,
-        borderRadius: 10,
-        margin: 5,
-        position: "relative",
-        marginTop: 70
-    }
-})
+
 
 export default Books;
