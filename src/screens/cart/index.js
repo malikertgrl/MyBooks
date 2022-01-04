@@ -23,25 +23,6 @@ const Cart = () => {
     const { remove_from_cart } = bindActionCreators(actionCreators, dispatch)
 
 
-
-    const reduce = (item) => {
-        console.log("ne var ", booksList)
-        const filterReduce = booksList.filter(x => x.count == 1)
-        console.log({ filterReduce })
-
-        // if (filterReduce > 0) {
-        //     return ToastAndroid.showWithGravity(
-        //         "Ürünü sepetten kaldırmak için remove'a tıklayınız.",
-        //         ToastAndroid.SHORT,
-        //         ToastAndroid.BOTTOM
-        //     );
-        // } else {
-        //     reduce_count(item)
-        // }
-
-        reduce_count(item)
-    }
-
     return (
         booksList.length > 0 ?
 
