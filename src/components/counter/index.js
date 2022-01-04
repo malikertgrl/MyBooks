@@ -14,8 +14,7 @@ const Counter = ({ item }) => {
     console.log("item", item)
 
     const counter = (item) => {
-        const count = item.count;
-        if (count == 1) {
+        if (item.count == 1) {
             return ToastAndroid.showWithGravity(
                 "Ürün sayısı 1 den düşük olamaz!",
                 ToastAndroid.SHORT,
